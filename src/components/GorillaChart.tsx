@@ -47,6 +47,8 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const pauseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const cardWidth = 260;
   const gap = 16;
 
@@ -66,9 +68,28 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
     return () => el.removeEventListener("scroll", updateActiveIndex);
   }, [updateActiveIndex]);
 
-  // Auto-slide every 2 seconds
+  // Pause auto-slide on user interaction, resume after 5s
+  const handleUserInteraction = useCallback(() => {
+    setPaused(true);
+    if (pauseTimer.current) clearTimeout(pauseTimer.current);
+    pauseTimer.current = setTimeout(() => setPaused(false), 5000);
+  }, []);
+
   useEffect(() => {
-    if (totalCards <= 1) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const onTouch = () => handleUserInteraction();
+    el.addEventListener("touchstart", onTouch, { passive: true });
+    el.addEventListener("pointerdown", onTouch);
+    return () => {
+      el.removeEventListener("touchstart", onTouch);
+      el.removeEventListener("pointerdown", onTouch);
+    };
+  }, [handleUserInteraction]);
+
+  // Auto-slide every 2 seconds (pauses on interaction)
+  useEffect(() => {
+    if (totalCards <= 1 || paused) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => {
         const next = prev + 1 >= totalCards ? 0 : prev + 1;
@@ -77,7 +98,7 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
       });
     }, 2000);
     return () => clearInterval(timer);
-  }, [totalCards, cardWidth, gap]);
+  }, [totalCards, cardWidth, gap, paused]);
 
   const scroll = (dir: "left" | "right") => {
     scrollRef.current?.scrollBy({ left: dir === "left" ? -(cardWidth + gap) : (cardWidth + gap), behavior: "smooth" });
