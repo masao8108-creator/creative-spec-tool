@@ -56,7 +56,7 @@ const TestimonialSection = () => {
             ref={scrollRef}
             className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"
           >
-            {TESTIMONIALS.map((t, i) => (
+            {shuffledTestimonials.map((t, i) => (
               <div
                 key={i}
                 className="min-w-[260px] max-w-[260px] snap-start bg-background rounded-2xl border border-border p-4 hover:shadow-sm transition-shadow flex-shrink-0"
