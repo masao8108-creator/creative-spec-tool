@@ -16,33 +16,29 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
     <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-sm transition-all">
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center gap-3.5 px-4 py-3.5 text-left"
+        className="w-full flex items-center gap-4 px-4 py-4 text-left"
       >
         {c.profileImage ? (
-          <img src={c.profileImage} alt={c.name} className="w-11 h-11 rounded-xl shrink-0 object-cover" />
+          <img src={c.profileImage} alt={c.name} className="w-20 h-20 rounded-full shrink-0 object-cover border-2 border-primary/20" />
         ) : (
-          <div className={`w-11 h-11 rounded-xl shrink-0 flex items-center justify-center text-base font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</div>
+          <div className={`w-20 h-20 rounded-full shrink-0 flex items-center justify-center text-2xl font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</div>
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
-            <span className="text-[14px] font-bold text-foreground">{c.name}</span>
+            <span className="text-[15px] font-extrabold text-foreground">{c.name}</span>
+            <span className="text-[12px] text-sub2">{c.nickname}</span>
             {c.featured && (
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary">LEAD</span>
             )}
           </div>
-          <div className="text-[12px] text-sub mt-0.5">{c.tagline.slice(0, 35)}…</div>
-          <div className="flex gap-1 mt-1.5 flex-wrap">
+          <div className="text-[12px] text-sub mt-1 line-clamp-1">{c.tagline}</div>
+          <div className="flex gap-1 mt-2 flex-wrap">
             {c.specialties.map((s) => (
               <span key={s} className="text-[10px] px-2 py-0.5 bg-muted rounded-full text-sub2 font-medium">{s}</span>
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-end gap-1 shrink-0">
-          {variant === "featured" && (
-            <span className="text-[11px] font-bold text-primary">상담가능</span>
-          )}
-          <ChevronDown className={`w-4 h-4 text-sub2 transition-transform ${expanded ? "rotate-180" : ""}`} />
-        </div>
+        <ChevronDown className={`w-4 h-4 text-sub2 transition-transform shrink-0 ${expanded ? "rotate-180" : ""}`} />
       </button>
 
       {expanded && (
