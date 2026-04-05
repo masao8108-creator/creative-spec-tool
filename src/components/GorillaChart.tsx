@@ -150,14 +150,23 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
                   scrollSnapAlign: "start",
                   border: c.featured ? '2px solid #E5A31D' : '1px solid hsl(var(--border))',
                 }}
-                onMouseEnter={() => setPaused(true)}
+                onMouseEnter={() => { setPaused(true); setHoveredIndex(i); }}
                 onMouseLeave={() => {
+                  setHoveredIndex(null);
                   if (pauseTimer.current) clearTimeout(pauseTimer.current);
                   pauseTimer.current = setTimeout(() => setPaused(false), 3000);
                 }}
+                onClick={(e) => {
+                  // Mobile tap toggle (only if not clicking a link)
+                  if (window.matchMedia("(hover: none)").matches && !(e.target as HTMLElement).closest("a")) {
+                    setHoveredIndex(prev => prev === i ? null : i);
+                    setPaused(true);
+                  }
+                }}
               >
-                <div className="overflow-hidden">
+                <div className="overflow-hidden relative">
                   <ChartCardImage name={c.name} profileImage={c.profileImage} />
+                  <CertificateOverlay profileImage={c.profileImage} visible={hoveredIndex === i} />
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-1.5 flex-wrap mb-1">
