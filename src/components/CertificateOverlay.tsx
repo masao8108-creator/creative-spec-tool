@@ -19,11 +19,13 @@ const CertificateOverlay = ({ profileImage, visible }: Props) => {
 
   const shbPath = `/profiles/${englishName}-shb.JPG`;
   const smbPath = `/profiles/${englishName}-smb.JPG`;
-  const bothMissing = !englishName || (shbError && smbError);
+
+  // Both missing = no overlay at all
+  if (!englishName || (shbError && smbError)) return null;
 
   return (
     <div
-      className="absolute inset-0 z-10 flex flex-col items-center justify-center"
+      className="absolute inset-0 z-10 flex items-center justify-center"
       style={{
         background: "rgba(26, 30, 44, 0.9)",
         backdropFilter: "blur(4px)",
@@ -31,36 +33,36 @@ const CertificateOverlay = ({ profileImage, visible }: Props) => {
         overflow: "hidden",
       }}
     >
-      {bothMissing ? (
-        <span className="text-[13px] text-white/70 font-medium">자격증 정보 준비 중</span>
-      ) : (
-        <div className="flex gap-2 w-full h-full items-start">
-          {!shbError && (
-            <div className="flex flex-col items-center gap-1" style={{ width: "48%" }}>
-              <span className="text-[10px] font-bold" style={{ color: "#E5A31D" }}>손해보험</span>
+      <div className="flex gap-2 w-full items-stretch justify-center">
+        {!shbError && (
+          <div className="flex flex-col items-center gap-1" style={{ width: "46%" }}>
+            <span className="text-[10px] font-bold" style={{ color: "#E5A31D" }}>손해보험</span>
+            <div className="w-full rounded-md overflow-hidden bg-white" style={{ aspectRatio: "3/4" }}>
               <img
                 src={shbPath}
                 alt="손해보험 자격증"
-                className="rounded-lg w-full"
+                className="w-full h-full"
                 style={{ objectFit: "contain" }}
                 onError={() => setShbError(true)}
               />
             </div>
-          )}
-          {!smbError && (
-            <div className="flex flex-col items-center gap-1" style={{ width: "48%" }}>
-              <span className="text-[10px] font-bold" style={{ color: "#E5A31D" }}>생명보험</span>
+          </div>
+        )}
+        {!smbError && (
+          <div className="flex flex-col items-center gap-1" style={{ width: "46%" }}>
+            <span className="text-[10px] font-bold" style={{ color: "#E5A31D" }}>생명보험</span>
+            <div className="w-full rounded-md overflow-hidden bg-white" style={{ aspectRatio: "3/4" }}>
               <img
                 src={smbPath}
                 alt="생명보험 자격증"
-                className="rounded-lg w-full"
+                className="w-full h-full"
                 style={{ objectFit: "contain" }}
                 onError={() => setSmbError(true)}
               />
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
