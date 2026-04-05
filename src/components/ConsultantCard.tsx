@@ -43,10 +43,17 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
           <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[15px] font-extrabold text-foreground">{c.name}</span>
             <span className="text-[12px] text-sub2">{c.nickname}</span>
-            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary flex items-center gap-0.5">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/></svg>
-              인증
-            </span>
+            <TooltipProvider delayDuration={200}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary flex items-center gap-0.5 cursor-default">
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/></svg>
+                    인증
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent><p>뽐뿌 인증 컨설턴트</p></TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             {c.featured && (
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-accent/15 text-accent">LEAD</span>
             )}

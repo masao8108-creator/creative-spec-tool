@@ -1,6 +1,7 @@
 import { CONSULTANTS, AVATAR_COLORS } from "@/data/consultants";
 import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
 import { useRef } from "react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const GorillaChart = () => {
   const featured = CONSULTANTS.filter((c) => c.featured);
