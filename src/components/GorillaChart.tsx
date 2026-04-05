@@ -3,7 +3,7 @@ import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import CertificateOverlay from "./CertificateOverlay";
 
-const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: string }) => {
+const ChartCardImage = ({ name, profileImage, hovered }: { name: string; profileImage: string; hovered?: boolean }) => {
   const [imgError, setImgError] = useState(false);
 
   const getBgColor = () => {
@@ -28,11 +28,12 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
     <img
       src={profileImage}
       alt={name}
-      className="w-full h-[280px] object-cover"
+      className="w-full h-[280px] object-cover transition-transform duration-300"
       style={{
         filter: 'brightness(1.05)',
         backgroundColor: getBgColor(),
         objectPosition: name === '최민희' ? 'center 10%' : 'center 15%',
+        transform: hovered ? 'scale(1.05)' : 'scale(1)',
       }}
       onError={() => {
         console.warn(`[프로필 이미지 로드 실패] ${name}: ${profileImage}`);
@@ -41,7 +42,6 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
     />
   );
 };
-
 const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
   const allBase = useMemo(() => shuffle([...CONSULTANTS]), []);
   const allConsultants = filter === "전체" ? allBase : allBase.filter(c => c.specialties.includes(filter));
@@ -165,7 +165,7 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
                 }}
               >
                 <div className="overflow-hidden relative">
-                  <ChartCardImage name={c.name} profileImage={c.profileImage} />
+                  <ChartCardImage name={c.name} profileImage={c.profileImage} hovered={hoveredIndex === i} />
                   <CertificateOverlay profileImage={c.profileImage} visible={hoveredIndex === i} />
                 </div>
                 <div className="p-4">

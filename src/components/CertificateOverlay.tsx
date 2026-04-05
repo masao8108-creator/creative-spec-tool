@@ -14,14 +14,47 @@ const CertificateOverlay = ({ profileImage, visible }: Props) => {
   const englishName = getEnglishName(profileImage);
   const [shbError, setShbError] = useState(false);
   const [smbError, setSmbError] = useState(false);
+  const [shbLoaded, setShbLoaded] = useState(false);
+  const [smbLoaded, setSmbLoaded] = useState(false);
 
   if (!visible) return null;
+  if (!englishName) return null;
 
   const shbPath = `/profiles/${englishName}-shb.JPG`;
   const smbPath = `/profiles/${englishName}-smb.JPG`;
 
-  // Both missing = no overlay at all
-  if (!englishName || (shbError && smbError)) return null;
+  // Both missing = no overlay
+  if (shbError && smbError) return null;
+
+  // At least one must have loaded successfully to show overlay
+  const hasAnyCert = shbLoaded || smbLoaded;
+
+  // If nothing loaded yet and nothing errored yet, render hidden images to probe
+  // Once both error, we return null above. Once one loads, we show the overlay.
+  if (!hasAnyCert && (!shbError || !smbError)) {
+    return (
+      <div style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}>
+        {!shbError && (
+          <img
+            src={shbPath}
+            alt=""
+            onLoad={() => setShbLoaded(true)}
+            onError={() => setShbError(true)}
+          />
+        )}
+        {!smbError && (
+          <img
+            src={smbPath}
+            alt=""
+            onLoad={() => setSmbLoaded(true)}
+            onError={() => setSmbError(true)}
+          />
+        )}
+      </div>
+    );
+  }
+
+  if (!hasAnyCert) return null;
 
   return (
     <div
