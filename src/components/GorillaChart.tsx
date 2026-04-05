@@ -1,6 +1,7 @@
 import { CONSULTANTS, AVATAR_COLORS } from "@/data/consultants";
 import { ChevronRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const GorillaChart = () => {
   const [showAll, setShowAll] = useState(false);
@@ -34,9 +35,10 @@ const GorillaChart = () => {
                     {c.featured ? "LEAD" : `TOP ${i + 1}`}
                   </span>
                 </div>
-                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-lg font-extrabold mb-2 ${color.bg} ${color.text}`}>
-                  {c.name[0]}
-                </div>
+                <Avatar className="w-11 h-11 rounded-xl">
+                  {c.profileImage && <AvatarImage src={c.profileImage} alt={c.name} className="object-cover" />}
+                  <AvatarFallback className={`rounded-xl text-lg font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</AvatarFallback>
+                </Avatar>
                 <div className="text-[13px] font-bold text-foreground truncate">{c.name}</div>
                 <div className="text-[11px] text-sub mt-0.5 truncate">{c.nickname}</div>
                 <div className="text-[11px] text-sub2 mt-1 line-clamp-2 leading-relaxed">{c.tagline.slice(0, 25)}…</div>

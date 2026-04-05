@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Consultant, AVATAR_COLORS, CONSULTANTS } from "@/data/consultants";
 import { MessageCircle, Phone, ChevronDown, Mail, ExternalLink } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Props {
   consultant: Consultant;
@@ -18,9 +19,10 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-3.5 px-4 py-3.5 text-left"
       >
-        <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-base font-extrabold shrink-0 ${color.bg} ${color.text}`}>
-          {c.name[0]}
-        </div>
+        <Avatar className="w-11 h-11 rounded-xl shrink-0">
+          {c.profileImage && <AvatarImage src={c.profileImage} alt={c.name} className="object-cover" />}
+          <AvatarFallback className={`rounded-xl text-base font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</AvatarFallback>
+        </Avatar>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
             <span className="text-[14px] font-bold text-foreground">{c.name}</span>
