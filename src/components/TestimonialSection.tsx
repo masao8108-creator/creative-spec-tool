@@ -23,6 +23,7 @@ const TESTIMONIALS = [
 ];
 
 const TestimonialSection = () => {
+  const shuffledTestimonials = useMemo(() => shuffle([...TESTIMONIALS]), []);
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (dir: number) => {
