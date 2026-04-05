@@ -92,7 +92,7 @@ const GorillaChart = () => {
                         뽐뿌인증컨설턴트
                       </span>
                       {c.featured && (
-                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary">우수설계사</span>
+                        <span className="text-[11px] font-extrabold px-2 py-0.5 rounded bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-700 border border-amber-300/50">⭐ 우수설계사</span>
                       )}
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-muted text-sub">{c.yearsOfExperience}년차</span>
                     </div>
