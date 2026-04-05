@@ -101,10 +101,12 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
   }, [totalCards, cardWidth, gap, paused]);
 
   const scroll = (dir: "left" | "right") => {
+    handleUserInteraction();
     scrollRef.current?.scrollBy({ left: dir === "left" ? -(cardWidth + gap) : (cardWidth + gap), behavior: "smooth" });
   };
 
   const scrollToIndex = (index: number) => {
+    handleUserInteraction();
     scrollRef.current?.scrollTo({ left: index * (cardWidth + gap), behavior: "smooth" });
   };
 
