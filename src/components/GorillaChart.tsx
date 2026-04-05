@@ -45,6 +45,7 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
 const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
   const allBase = useMemo(() => shuffle([...CONSULTANTS]), []);
   const allConsultants = filter === "전체" ? allBase : allBase.filter(c => c.specialties.includes(filter));
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
