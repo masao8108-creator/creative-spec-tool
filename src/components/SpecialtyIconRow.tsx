@@ -10,7 +10,7 @@ const SpecialtyIconRow = ({ current, onChange }: Props) => {
 
   return (
     <section className="bg-card mt-2">
-      <div className="max-w-[640px] mx-auto px-5 py-4">
+      <div className="max-w-[900px] mx-auto px-5 py-4">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[15px] font-bold text-foreground">전문분야</h2>
           {current !== "전체" && (

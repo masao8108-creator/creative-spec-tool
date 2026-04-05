@@ -114,7 +114,7 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
 
   return (
     <section id="consultants" className="bg-card mt-2">
-      <div className="max-w-[640px] mx-auto px-5 py-5">
+      <div className="max-w-[900px] mx-auto px-5 py-5">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-[17px] font-extrabold text-foreground">인증 컨설턴트</h2>
           <span className="text-[12px] text-sub2">{totalCards}명</span>

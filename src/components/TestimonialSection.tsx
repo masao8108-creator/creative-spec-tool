@@ -32,7 +32,7 @@ const TestimonialSection = () => {
 
   return (
     <section className="bg-card mt-2">
-      <div className="max-w-[640px] mx-auto px-5 py-6">
+      <div className="max-w-[900px] mx-auto px-5 py-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-[16px] font-extrabold text-foreground">⭐ 고객 후기</h2>
           <span className="text-[12px] text-sub2">실제 상담 후기</span>
