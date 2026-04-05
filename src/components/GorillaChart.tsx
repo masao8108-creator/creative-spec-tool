@@ -58,8 +58,8 @@ const GorillaChart = () => {
                         className="w-full h-full object-cover relative z-10 transition-transform duration-300 group-hover:scale-105"
                         style={{
                           filter: 'brightness(1.05)',
-                          backgroundColor: '#f0f0ec',
-                          objectPosition: c.name === '최민희' ? 'center 10%' : 'center 20%',
+                          backgroundColor: c.name === '유승협' ? '#ffffff' : '#f0f0ec',
+                          objectPosition: c.name === '최민희' ? 'center 10%' : 'center 15%',
                         }}
                       />
                     ) : (
