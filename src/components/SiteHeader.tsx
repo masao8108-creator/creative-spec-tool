@@ -4,7 +4,8 @@ const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="max-w-[900px] mx-auto flex items-center justify-between px-5 h-12">
-        <a href="/" className="flex items-center">
+        <a href="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="보험톡" className="w-8 h-8 rounded-[6px]" />
           <span className="text-[17px] font-extrabold tracking-tight">
             <span style={{ color: '#1A1E2C' }}>보험</span><span style={{ color: '#E5A31D' }}>톡</span>
           </span>
