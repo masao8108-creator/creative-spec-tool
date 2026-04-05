@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Consultant, AVATAR_COLORS, CONSULTANTS } from "@/data/consultants";
 import { MessageCircle, Phone, ChevronDown, Mail, ExternalLink } from "lucide-react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Props {
   consultant: Consultant;
