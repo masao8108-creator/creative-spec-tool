@@ -1,4 +1,4 @@
-import { MessageCircle, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const HeroBanner = () => {
   return (
