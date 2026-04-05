@@ -39,12 +39,13 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 flex-wrap">
             <span className="text-[15px] font-extrabold text-foreground">{c.name}</span>
             <span className="text-[12px] text-sub2">{c.nickname}</span>
             {c.featured && (
               <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary">LEAD</span>
             )}
+            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-muted text-sub">{c.yearsOfExperience}년차</span>
           </div>
           <div className="text-[12px] text-sub mt-1 line-clamp-1">{c.tagline}</div>
           <div className="flex gap-1 mt-2 flex-wrap">
