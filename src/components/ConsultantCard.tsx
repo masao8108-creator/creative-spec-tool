@@ -8,10 +8,25 @@ interface Props {
   variant: "featured" | "normal";
 }
 
+const GoldFallback = ({ name, size = 24 }: { name: string; size?: number }) => (
+  <div
+    className={`w-${size} h-${size} rounded-full shrink-0 flex items-center justify-center`}
+    style={{ background: 'linear-gradient(135deg, #E5A31D, #f0c45c)', width: size * 4, height: size * 4 }}
+  >
+    <span className="text-[32px] font-[800] text-white">{name[0]}</span>
+  </div>
+);
+
 const ConsultantCard = ({ consultant: c, variant }: Props) => {
   const [expanded, setExpanded] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const idx = CONSULTANTS.indexOf(c);
   const color = AVATAR_COLORS[idx % AVATAR_COLORS.length];
+
+  const getBgColor = () => {
+    if (c.name === '유승협') return '#e8e6e1';
+    return '#f0f0ec';
+  };
 
   return (
     <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-sm transition-all">
@@ -19,25 +34,24 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-4 px-4 py-4 text-left"
       >
-        {c.profileImage ? (
+        {c.profileImage && !imgError ? (
           <img
             src={c.profileImage}
             alt={c.name}
             className="w-24 h-24 rounded-full shrink-0 object-cover border-2 transition-transform duration-300 group-hover:scale-110"
             style={{
               filter: 'brightness(1.05)',
-              backgroundColor: c.name === '유승협' ? '#ffffff' : '#f0f0ec',
+              backgroundColor: getBgColor(),
               borderColor: '#f0f0ec',
               objectPosition: c.name === '최민희' ? 'center 10%' : 'center 15%',
             }}
+            onError={(e) => {
+              console.warn(`[프로필 이미지 로드 실패] ${c.name}: ${c.profileImage}`);
+              setImgError(true);
+            }}
           />
         ) : (
-          <div
-            className="w-24 h-24 rounded-full shrink-0 flex items-center justify-center"
-            style={{ background: 'linear-gradient(135deg, #E5A31D, #f0c45c)' }}
-          >
-            <span className="text-[32px] font-[800] text-white">{c.name[0]}</span>
-          </div>
+          <GoldFallback name={c.name} size={24} />
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 flex-wrap">
