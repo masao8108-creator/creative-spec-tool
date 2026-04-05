@@ -18,6 +18,7 @@ const Index = () => {
 
   const filteredFeatured = featured.filter((c) => matchFilter(c.specialties));
   const filteredRegular = regularShuffled.filter((c) => matchFilter(c.specialties));
+  const totalCount = filteredFeatured.length + filteredRegular.length;
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,43 +27,25 @@ const Index = () => {
       <SpecialtyIconRow current={filter} onChange={setFilter} />
       <GorillaChart />
 
-      {/* Featured consultants - Card Gorilla "스테디셀러" style */}
-      <section id="consultants" className="border-b border-border">
-        <div className="max-w-[1200px] mx-auto px-5 py-8">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-extrabold flex items-center gap-1.5">
-              ⭐ 대표 컨설턴트
-            </h2>
+      {/* Consultant list - Naver Pay Card list style */}
+      <section id="consultants" className="bg-card mt-2">
+        <div className="max-w-[640px] mx-auto px-5 py-4">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-[15px] font-bold text-primary">{totalCount}명</span>
+            <span className="text-[12px] text-sub2">전문 컨설턴트</span>
           </div>
-          {filteredFeatured.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredFeatured.map((c) => (
-                <ConsultantCard key={c.name} consultant={c} variant="featured" />
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-sub2 py-4">해당 분야의 대표 컨설턴트가 없습니다.</p>
-          )}
-        </div>
-      </section>
 
-      {/* All consultants - Card Gorilla list style */}
-      <section className="bg-section-alt border-b border-border">
-        <div className="max-w-[1200px] mx-auto px-5 py-8">
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-extrabold flex items-center gap-1.5">
-              🔥 인증 컨설턴트
-            </h2>
-            <span className="text-xs text-sub2">{filteredRegular.length}명</span>
+          <div className="space-y-2">
+            {filteredFeatured.map((c) => (
+              <ConsultantCard key={c.name} consultant={c} variant="featured" />
+            ))}
+            {filteredRegular.map((c) => (
+              <ConsultantCard key={c.name} consultant={c} variant="normal" />
+            ))}
           </div>
-          {filteredRegular.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {filteredRegular.map((c) => (
-                <ConsultantCard key={c.name} consultant={c} variant="normal" />
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-sub2 py-4">해당 분야의 컨설턴트가 없습니다.</p>
+
+          {totalCount === 0 && (
+            <p className="text-[13px] text-sub2 py-8 text-center">해당 분야의 컨설턴트가 없습니다.</p>
           )}
         </div>
       </section>
