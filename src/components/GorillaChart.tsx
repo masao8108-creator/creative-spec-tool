@@ -96,7 +96,7 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
         scrollRef.current?.scrollTo({ left: next * (cardWidth + gap), behavior: "smooth" });
         return next;
       });
-    }, 2000);
+    }, 3000);
     return () => clearInterval(timer);
   }, [totalCards, cardWidth, gap, paused]);
 
