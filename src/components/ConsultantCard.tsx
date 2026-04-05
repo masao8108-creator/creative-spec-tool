@@ -19,9 +19,24 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
         className="w-full flex items-center gap-4 px-4 py-4 text-left"
       >
         {c.profileImage ? (
-          <img src={c.profileImage} alt={c.name} className="w-24 h-24 rounded-full shrink-0 object-cover object-top border-2 border-primary/20 transition-transform duration-300 group-hover:scale-110" style={{ filter: 'brightness(1.05)' }} />
+          <img
+            src={c.profileImage}
+            alt={c.name}
+            className="w-24 h-24 rounded-full shrink-0 object-cover border-2 transition-transform duration-300 group-hover:scale-110"
+            style={{
+              filter: 'brightness(1.05)',
+              backgroundColor: '#f0f0ec',
+              borderColor: '#f0f0ec',
+              objectPosition: c.name === '최민희' ? 'center 10%' : 'center 20%',
+            }}
+          />
         ) : (
-          <div className={`w-24 h-24 rounded-full shrink-0 flex items-center justify-center text-2xl font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</div>
+          <div
+            className="w-24 h-24 rounded-full shrink-0 flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, #E5A31D, #f0c45c)' }}
+          >
+            <span className="text-[32px] font-[800] text-white">{c.name[0]}</span>
+          </div>
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5">
