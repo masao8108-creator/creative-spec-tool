@@ -13,13 +13,13 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
   const color = AVATAR_COLORS[idx % AVATAR_COLORS.length];
 
   return (
-    <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-sm transition-all">
+    <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-sm transition-all">
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-4 px-4 py-4 text-left"
       >
         {c.profileImage ? (
-          <img src={c.profileImage} alt={c.name} className="w-24 h-24 rounded-full shrink-0 object-cover object-top border-2 border-primary/20" style={{ filter: 'brightness(1.05)' }} />
+          <img src={c.profileImage} alt={c.name} className="w-24 h-24 rounded-full shrink-0 object-cover object-top border-2 border-primary/20 transition-transform duration-300 group-hover:scale-110" style={{ filter: 'brightness(1.05)' }} />
         ) : (
           <div className={`w-24 h-24 rounded-full shrink-0 flex items-center justify-center text-2xl font-extrabold ${color.bg} ${color.text}`}>{c.name[0]}</div>
         )}
