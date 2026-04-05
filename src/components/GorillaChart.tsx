@@ -86,8 +86,12 @@ const GorillaChart = () => {
                     <div className="flex items-center gap-2 flex-wrap mb-3">
                       <span className="text-[16px] font-extrabold text-primary">{c.name}</span>
                       <span className="text-[12px] text-sub2">{c.nickname}</span>
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary flex items-center gap-0.5">
+                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/></svg>
+                        인증
+                      </span>
                       {c.featured && (
-                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary">LEAD</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-accent/15 text-accent">LEAD</span>
                       )}
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-muted text-sub">{c.yearsOfExperience}년차</span>
                     </div>
