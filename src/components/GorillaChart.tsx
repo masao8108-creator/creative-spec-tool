@@ -41,10 +41,11 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
   );
 };
 
-const GorillaChart = () => {
+const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
   const featured = CONSULTANTS.filter((c) => c.featured);
   const regular = CONSULTANTS.filter((c) => !c.featured);
-  const allConsultants = [...featured, ...regular];
+  const allBase = [...featured, ...regular];
+  const allConsultants = filter === "전체" ? allBase : allBase.filter(c => c.specialties.includes(filter));
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
