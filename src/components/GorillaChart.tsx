@@ -21,7 +21,7 @@ const GorillaChart = () => {
             return (
               <div
                 key={c.name}
-                className="shrink-0 w-[280px] rounded-2xl border border-border bg-card overflow-hidden hover:shadow-md transition-shadow snap-start"
+                className="group shrink-0 w-[280px] rounded-2xl border border-border bg-card overflow-hidden hover:shadow-md transition-shadow snap-start"
               >
                 {/* Photo area with gold decoration */}
                 <div className="relative w-full h-[320px] overflow-hidden bg-muted">
@@ -34,7 +34,7 @@ const GorillaChart = () => {
                     <img
                       src={c.profileImage}
                       alt={c.name}
-                      className="w-full h-full object-cover object-top relative z-10"
+                      className="w-full h-full object-cover object-top relative z-10 transition-transform duration-300 group-hover:scale-105"
                       style={{ filter: 'brightness(1.05)' }}
                     />
                   ) : (
