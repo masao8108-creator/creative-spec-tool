@@ -1,13 +1,11 @@
 import { Menu } from "lucide-react";
-import logo from "@/assets/logo.png";
 
 const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="max-w-[640px] mx-auto flex items-center justify-between px-5 h-12">
-        <a href="/" className="flex items-center gap-1.5">
-          <img src={logo} alt="보험톡" className="h-7 w-auto" />
-          <span className="text-[15px] font-extrabold tracking-tight">
+        <a href="/" className="flex items-center">
+          <span className="text-[17px] font-extrabold tracking-tight">
             <span style={{ color: '#1A1E2C' }}>보험</span><span style={{ color: '#E5A31D' }}>톡</span>
           </span>
         </a>
