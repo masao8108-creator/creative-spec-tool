@@ -1,6 +1,6 @@
-import { CONSULTANTS } from "@/data/consultants";
+import { CONSULTANTS, shuffle } from "@/data/consultants";
 import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 
 const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: string }) => {
   const [imgError, setImgError] = useState(false);
@@ -42,9 +42,7 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
 };
 
 const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
-  const featured = CONSULTANTS.filter((c) => c.featured);
-  const regular = CONSULTANTS.filter((c) => !c.featured);
-  const allBase = [...featured, ...regular];
+  const allBase = useMemo(() => shuffle([...CONSULTANTS]), []);
   const allConsultants = filter === "전체" ? allBase : allBase.filter(c => c.specialties.includes(filter));
 
   const scrollRef = useRef<HTMLDivElement>(null);
