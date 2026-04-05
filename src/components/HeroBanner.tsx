@@ -22,7 +22,7 @@ const HeroBanner = () => {
             </p>
           </div>
         </a>
-        <p className="text-[11px] text-sub2 text-center mt-2 tracking-wide">검증된 전문가에게 TALK</p>
+        <p className="text-[13px] text-center mt-2" style={{ color: '#9CA3AF' }}>검증된 전문가에게, 톡 하세요</p>
       </div>
     </section>
   );
