@@ -27,7 +27,7 @@ export const CONSULTANTS: Consultant[] = [
   { name: "최민희", nickname: "보험스마일", tagline: "따뜻한 미소로 고객님의 보험을 설계합니다.", phone: "010-2089-0801", kakaoChat: "https://open.kakao.com/o/s4VhHF0h", email: "shininglifegogo@gmail.com", instagram: null, blog: null, specialties: ["실손보험", "건강보험"], featured: false, profileImage: "/profiles/choi-minhee.jpg", yearsOfExperience: 5 },
   { name: "김우정", nickname: "보험프렌드", tagline: "어렵고 복잡한 보험, 이제 편안한 동네 친구에게 가벼운 마음으로 물어보세요! 당신의 평생 든든한 보험프렌드 김우정입니다.", phone: "010-9485-3819", kakaoChat: "https://open.kakao.com/o/s79pwfYh", email: "woojung1118@naver.com", instagram: null, blog: null, specialties: ["자동차보험", "실손보험"], featured: false, profileImage: "/profiles/kim-woojung.jpg", yearsOfExperience: 4 },
   { name: "차원주", nickname: "보험헬퍼", tagline: "고객의 입장에서 최선의 보험을 설계합니다", phone: "010-2165-0546", kakaoChat: "https://open.kakao.com/o/s1OwLbh", email: "", instagram: null, blog: null, specialties: ["자동차보험", "실손보험"], featured: false, profileImage: "/profiles/cha-wonju.jpg", yearsOfExperience: 1 },
-  { name: "최민형", nickname: "", tagline: "", phone: "", kakaoChat: "", email: "", instagram: null, blog: null, specialties: [], featured: false, profileImage: "/profiles/choi-minhyung.jpg", yearsOfExperience: 1 },
+  { name: "최민형", nickname: "보험뽐뿌", tagline: "안정적이고 지속적일 수 있도록 함께 하겠습니다.", phone: "010-9639-0805", kakaoChat: "https://open.kakao.com/o/sqIvGA0h", email: "", instagram: null, blog: null, specialties: [], featured: false, profileImage: "/profiles/choi-minhyung.jpg", yearsOfExperience: 1 },
 ];
 
 export const SPECIALTY_ICONS: Record<string, { emoji: string; label: string }> = {
