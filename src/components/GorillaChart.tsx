@@ -101,3 +101,5 @@ const GorillaChart = () => {
     </section>
   );
 };
+
+export default GorillaChart;
