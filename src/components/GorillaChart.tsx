@@ -1,6 +1,7 @@
 import { CONSULTANTS, shuffle } from "@/data/consultants";
 import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
+import CertificateOverlay from "./CertificateOverlay";
 
 const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: string }) => {
   const [imgError, setImgError] = useState(false);
