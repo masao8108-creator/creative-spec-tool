@@ -83,12 +83,13 @@ const GorillaChart = () => {
                     <p className="text-[12px] text-sub leading-relaxed line-clamp-1 mb-2">
                       {c.tagline}
                     </p>
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 flex-wrap mb-3">
                       <span className="text-[16px] font-extrabold text-primary">{c.name}</span>
                       <span className="text-[12px] text-sub2">{c.nickname}</span>
                       {c.featured && (
                         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/10 text-primary">LEAD</span>
                       )}
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-muted text-sub">{c.yearsOfExperience}년차</span>
                     </div>
                     <a
                       href={c.kakaoChat}
