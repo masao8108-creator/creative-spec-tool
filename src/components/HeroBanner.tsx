@@ -22,6 +22,7 @@ const HeroBanner = () => {
             </p>
           </div>
         </a>
+        <p className="text-[11px] text-sub2 text-center mt-2 tracking-wide">검증된 전문가에게 TALK</p>
       </div>
     </section>
   );
