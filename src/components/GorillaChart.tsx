@@ -148,6 +148,11 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
                   scrollSnapAlign: "start",
                   border: c.featured ? '2px solid #E5A31D' : '1px solid hsl(var(--border))',
                 }}
+                onMouseEnter={() => setPaused(true)}
+                onMouseLeave={() => {
+                  if (pauseTimer.current) clearTimeout(pauseTimer.current);
+                  pauseTimer.current = setTimeout(() => setPaused(false), 3000);
+                }}
               >
                 <div className="overflow-hidden">
                   <ChartCardImage name={c.name} profileImage={c.profileImage} />
