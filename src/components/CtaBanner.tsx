@@ -1,6 +1,6 @@
 const CtaBanner = () => (
   <section className="bg-card mt-2">
-    <div className="max-w-[640px] mx-auto px-5 py-6">
+    <div className="max-w-[900px] mx-auto px-5 py-6">
       <div className="bg-gold-light rounded-2xl p-5 text-center">
         <div className="text-2xl mb-2">🏛️</div>
         <h3 className="text-[15px] font-bold text-foreground mb-1">뽐뿌 보험상담실</h3>

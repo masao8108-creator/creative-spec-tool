@@ -1,6 +1,6 @@
 const SiteFooter = () => (
   <footer className="bg-card mt-2 border-t border-border">
-    <div className="max-w-[640px] mx-auto px-5 py-8">
+    <div className="max-w-[900px] mx-auto px-5 py-8">
       <div className="text-[11px] font-bold tracking-[0.1em] text-sub2 mb-3">보험톡 · STEADY GROUP</div>
       <p className="text-[11px] text-sub2 leading-6">
         원금융서비스 스테디사업단 ·{" "}

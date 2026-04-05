@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 const HeroBanner = () => {
   return (
     <section className="bg-card">
-      <div className="max-w-[640px] mx-auto px-5 pt-5 pb-4">
+      <div className="max-w-[900px] mx-auto px-5 pt-5 pb-4">
         {/* Diagnostic banner - like Naver card's 카드발급 진단하기 */}
         <a
           href="#consultants"
