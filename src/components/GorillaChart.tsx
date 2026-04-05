@@ -34,7 +34,8 @@ const GorillaChart = () => {
                     <img
                       src={c.profileImage}
                       alt={c.name}
-                      className="w-full h-full object-cover relative z-10"
+                      className="w-full h-full object-cover object-top relative z-10"
+                      style={{ filter: 'brightness(1.05)' }}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center relative z-10">
