@@ -68,6 +68,19 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
     return () => el.removeEventListener("scroll", updateActiveIndex);
   }, [updateActiveIndex]);
 
+  // Auto-slide every 2 seconds
+  useEffect(() => {
+    if (totalCards <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => {
+        const next = prev + 1 >= totalCards ? 0 : prev + 1;
+        scrollRef.current?.scrollTo({ left: next * (cardWidth + gap), behavior: "smooth" });
+        return next;
+      });
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [totalCards, cardWidth, gap]);
+
   const scroll = (dir: "left" | "right") => {
     scrollRef.current?.scrollBy({ left: dir === "left" ? -(cardWidth + gap) : (cardWidth + gap), behavior: "smooth" });
   };
