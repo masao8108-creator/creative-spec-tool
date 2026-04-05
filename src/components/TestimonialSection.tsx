@@ -1,4 +1,5 @@
-import { Star } from "lucide-react";
+import React from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TESTIMONIALS = [
   {
