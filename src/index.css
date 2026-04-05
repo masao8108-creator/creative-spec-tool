@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 97%;
     --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
@@ -16,11 +16,11 @@
     --primary: 40 85% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 20% 96%;
+    --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 40 8% 96%;
-    --muted-foreground: 220 6% 44%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
     --accent: 40 85% 51%;
     --accent-foreground: 0 0% 100%;
@@ -28,18 +28,19 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
     --ring: 40 85% 51%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --ink: 0 0% 13%;
-    --sub: 220 6% 44%;
-    --sub2: 220 6% 64%;
+    --sub: 0 0% 45%;
+    --sub2: 0 0% 64%;
     --gold: 40 85% 51%;
     --gold-light: 43 90% 95%;
-    --section-alt: 40 10% 97%;
+    --section-alt: 0 0% 97%;
+    --naver-green: 150 67% 40%;
   }
 }
 
@@ -51,7 +52,7 @@
     @apply bg-background text-foreground;
     font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
 }
 

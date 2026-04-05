@@ -7,46 +7,44 @@ interface Props {
 
 const SpecialtyIconRow = ({ current, onChange }: Props) => {
   const specs = Object.entries(SPECIALTY_ICONS);
-  const counts = specs.map(([key]) => CONSULTANTS.filter((c) => c.specialties.includes(key)).length);
 
   return (
-    <section className="py-8 border-b border-border">
-      <div className="max-w-[1200px] mx-auto px-5">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-extrabold flex items-center gap-1.5">
-            🛡️ 전문분야별 컨설턴트
-          </h2>
+    <section className="bg-card mt-2">
+      <div className="max-w-[640px] mx-auto px-5 py-4">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-[15px] font-bold text-foreground">전문분야</h2>
+          {current !== "전체" && (
+            <button
+              onClick={() => onChange("전체")}
+              className="text-[12px] text-primary font-semibold"
+            >
+              초기화
+            </button>
+          )}
+        </div>
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-1">
           <button
             onClick={() => onChange("전체")}
-            className="text-xs font-semibold text-sub border border-border rounded-lg px-3 py-1.5 hover:border-primary hover:text-primary transition-all"
+            className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-semibold transition-all border ${
+              current === "전체"
+                ? "bg-foreground text-card border-foreground"
+                : "bg-card text-sub border-border hover:border-foreground/30"
+            }`}
           >
-            전체보기
+            전체
           </button>
-        </div>
-        <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1 -mx-1 px-1">
-          {specs.map(([key, val], i) => (
+          {specs.map(([key, val]) => (
             <button
               key={key}
               onClick={() => onChange(current === key ? "전체" : key)}
-              className={`flex flex-col items-center gap-2 min-w-[80px] group transition-all ${
-                current === key ? "scale-105" : ""
+              className={`shrink-0 px-4 py-2 rounded-full text-[13px] font-semibold transition-all border flex items-center gap-1.5 ${
+                current === key
+                  ? "bg-foreground text-card border-foreground"
+                  : "bg-card text-sub border-border hover:border-foreground/30"
               }`}
             >
-              <div
-                className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl transition-all border-2 ${
-                  current === key
-                    ? "border-primary bg-gold-light shadow-sm"
-                    : "border-transparent bg-muted group-hover:border-primary/30"
-                }`}
-              >
-                {val.emoji}
-              </div>
-              <div className="text-center">
-                <div className={`text-[11px] font-semibold ${current === key ? "text-primary" : "text-foreground"}`}>
-                  {val.label}
-                </div>
-                <div className="text-[10px] text-sub2">{counts[i]}명</div>
-              </div>
+              <span className="text-base">{val.emoji}</span>
+              {val.label}
             </button>
           ))}
         </div>
