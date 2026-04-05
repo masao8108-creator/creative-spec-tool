@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { shuffle } from "@/data/consultants";
 
 const TESTIMONIALS = [
   { name: "김**", rating: 5, text: "자동차보험 만기라 비교 견적 받았는데, 다이렉트보다 보장은 넓고 보험료는 비슷하게 나왔어요. 왜 설계사를 통해야 하는지 이해했습니다.", consultant: "경주현 컨설턴트", date: "2026.03" },
