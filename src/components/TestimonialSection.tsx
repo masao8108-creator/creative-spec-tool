@@ -1,4 +1,5 @@
-import { Star } from "lucide-react";
+import React from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const TESTIMONIALS = [
   {
@@ -38,49 +39,75 @@ const TESTIMONIALS = [
   },
 ];
 
-const TestimonialSection = () => (
-  <section className="bg-card mt-2">
-    <div className="max-w-[640px] mx-auto px-5 py-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-[16px] font-extrabold text-foreground">⭐ 고객 후기</h2>
-        <span className="text-[12px] text-sub2">실제 상담 후기</span>
-      </div>
+const TestimonialSection = () => {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
 
-      <div className="space-y-3">
-        {TESTIMONIALS.map((t, i) => (
-          <div
-            key={i}
-            className="bg-background rounded-2xl border border-border p-4 hover:shadow-sm transition-shadow"
+  const scroll = (dir: number) => {
+    scrollRef.current?.scrollBy({ left: dir * 280, behavior: "smooth" });
+  };
+
+  return (
+    <section className="bg-card mt-2">
+      <div className="max-w-[640px] mx-auto px-5 py-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-[16px] font-extrabold text-foreground">⭐ 고객 후기</h2>
+          <span className="text-[12px] text-sub2">실제 상담 후기</span>
+        </div>
+
+        <div className="relative">
+          <button
+            onClick={() => scroll(-1)}
+            className="hidden md:flex absolute -left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-card border border-border shadow-md hover:bg-muted transition-colors"
           >
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, si) => (
-                  <Star
-                    key={si}
-                    className={`w-3.5 h-3.5 ${
-                      si < t.rating
-                        ? "fill-primary text-primary"
-                        : "fill-muted text-muted"
-                    }`}
-                  />
-                ))}
+            <ChevronLeft className="w-4 h-4 text-foreground" />
+          </button>
+          <button
+            onClick={() => scroll(1)}
+            className="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 items-center justify-center rounded-full bg-card border border-border shadow-md hover:bg-muted transition-colors"
+          >
+            <ChevronRight className="w-4 h-4 text-foreground" />
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <div
+                key={i}
+                className="min-w-[260px] max-w-[260px] snap-start bg-background rounded-2xl border border-border p-4 hover:shadow-sm transition-shadow flex-shrink-0"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: 5 }).map((_, si) => (
+                      <Star
+                        key={si}
+                        className={`w-3.5 h-3.5 ${
+                          si < t.rating
+                            ? "fill-primary text-primary"
+                            : "fill-muted text-muted"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[11px] text-sub2">{t.date}</span>
+                </div>
+
+                <p className="text-[13px] text-foreground leading-relaxed mb-2.5 line-clamp-3">
+                  "{t.text}"
+                </p>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-[12px] font-bold text-sub">{t.name}</span>
+                  <span className="text-[11px] text-primary font-medium">{t.consultant}</span>
+                </div>
               </div>
-              <span className="text-[11px] text-sub2">{t.date}</span>
-            </div>
-
-            <p className="text-[13px] text-foreground leading-relaxed mb-2.5">
-              "{t.text}"
-            </p>
-
-            <div className="flex items-center justify-between">
-              <span className="text-[12px] font-bold text-sub">{t.name}</span>
-              <span className="text-[11px] text-primary font-medium">{t.consultant}</span>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default TestimonialSection;
