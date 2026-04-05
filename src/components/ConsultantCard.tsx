@@ -26,9 +26,9 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
             className="w-24 h-24 rounded-full shrink-0 object-cover border-2 transition-transform duration-300 group-hover:scale-110"
             style={{
               filter: 'brightness(1.05)',
-              backgroundColor: '#f0f0ec',
+              backgroundColor: c.name === '유승협' ? '#ffffff' : '#f0f0ec',
               borderColor: '#f0f0ec',
-              objectPosition: c.name === '최민희' ? 'center 10%' : 'center 20%',
+              objectPosition: c.name === '최민희' ? 'center 10%' : 'center 15%',
             }}
           />
         ) : (
