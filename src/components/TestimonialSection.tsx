@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { shuffle } from "@/data/consultants";
 
 const TESTIMONIALS = [
   { name: "김**", rating: 5, text: "자동차보험 만기라 비교 견적 받았는데, 다이렉트보다 보장은 넓고 보험료는 비슷하게 나왔어요. 왜 설계사를 통해야 하는지 이해했습니다.", consultant: "경주현 컨설턴트", date: "2026.03" },
@@ -22,6 +23,7 @@ const TESTIMONIALS = [
 ];
 
 const TestimonialSection = () => {
+  const shuffledTestimonials = useMemo(() => shuffle([...TESTIMONIALS]), []);
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   const scroll = (dir: number) => {
@@ -54,7 +56,7 @@ const TestimonialSection = () => {
             ref={scrollRef}
             className="flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"
           >
-            {TESTIMONIALS.map((t, i) => (
+            {shuffledTestimonials.map((t, i) => (
               <div
                 key={i}
                 className="min-w-[260px] max-w-[260px] snap-start bg-background rounded-2xl border border-border p-4 hover:shadow-sm transition-shadow flex-shrink-0"
