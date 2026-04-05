@@ -1,7 +1,46 @@
 import { CONSULTANTS, AVATAR_COLORS } from "@/data/consultants";
 import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
+const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: string }) => {
+  const [imgError, setImgError] = useState(false);
+
+  const getBgColor = () => {
+    if (name === '유승협') return '#e8e6e1';
+    return '#f0f0ec';
+  };
+
+  if (imgError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center relative z-10">
+        <div
+          className="w-24 h-24 rounded-full flex items-center justify-center"
+          style={{ background: 'linear-gradient(135deg, #E5A31D, #f0c45c)' }}
+        >
+          <span className="text-[32px] font-[800] text-white">{name[0]}</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={profileImage}
+      alt={name}
+      className="w-full h-full object-cover relative z-10 transition-transform duration-300 group-hover:scale-105"
+      style={{
+        filter: 'brightness(1.05)',
+        backgroundColor: getBgColor(),
+        objectPosition: name === '최민희' ? 'center 10%' : 'center 15%',
+      }}
+      onError={() => {
+        console.warn(`[프로필 이미지 로드 실패] ${name}: ${profileImage}`);
+        setImgError(true);
+      }}
+    />
+  );
+};
 
 const GorillaChart = () => {
   const featured = CONSULTANTS.filter((c) => c.featured);
@@ -40,7 +79,6 @@ const GorillaChart = () => {
 
           <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-3 -mx-1 px-1 snap-x snap-mandatory">
             {topList.map((c) => {
-              const color = AVATAR_COLORS[CONSULTANTS.indexOf(c) % AVATAR_COLORS.length];
               return (
                 <div
                   key={c.name}
@@ -52,16 +90,7 @@ const GorillaChart = () => {
                       style={{ background: `hsl(var(--gold))` }}
                     />
                     {c.profileImage ? (
-                      <img
-                        src={c.profileImage}
-                        alt={c.name}
-                        className="w-full h-full object-cover relative z-10 transition-transform duration-300 group-hover:scale-105"
-                        style={{
-                          filter: 'brightness(1.05)',
-                          backgroundColor: c.name === '유승협' ? '#ffffff' : '#f0f0ec',
-                          objectPosition: c.name === '최민희' ? 'center 10%' : 'center 15%',
-                        }}
-                      />
+                      <ChartCardImage name={c.name} profileImage={c.profileImage} />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center relative z-10">
                         <div
