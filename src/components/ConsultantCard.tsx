@@ -80,10 +80,11 @@ const ConsultantCard = ({ consultant: c, variant }: Props) => {
         <div className="px-4 pb-4 border-t border-border">
           <div className="pt-3">
             <p className="text-[13px] text-sub leading-relaxed mb-3">{c.tagline}</p>
-            <div className="flex items-center gap-3 text-[12px] text-sub2 mb-3 flex-wrap">
-              <span className="flex items-center gap-1"><Phone className="w-3 h-3" />{c.phone}</span>
-              <span className="flex items-center gap-1"><Mail className="w-3 h-3" />{c.email}</span>
-            </div>
+            {c.phone && (
+              <div className="flex items-center gap-3 text-[12px] text-sub2 mb-3 flex-wrap">
+                <span className="flex items-center gap-1"><Phone className="w-3 h-3" />{c.phone}</span>
+              </div>
+            )}
             {(c.instagram || c.blog) && (
               <div className="flex gap-2 mb-3">
                 {c.instagram && (
