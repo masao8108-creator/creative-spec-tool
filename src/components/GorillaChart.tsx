@@ -1,6 +1,7 @@
 import { CONSULTANTS, shuffle } from "@/data/consultants";
 import { ChevronRight, ChevronLeft, MessageCircle } from "lucide-react";
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
+import CertificateOverlay from "./CertificateOverlay";
 
 const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: string }) => {
   const [imgError, setImgError] = useState(false);
@@ -44,6 +45,7 @@ const ChartCardImage = ({ name, profileImage }: { name: string; profileImage: st
 const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
   const allBase = useMemo(() => shuffle([...CONSULTANTS]), []);
   const allConsultants = filter === "전체" ? allBase : allBase.filter(c => c.specialties.includes(filter));
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -148,14 +150,23 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
                   scrollSnapAlign: "start",
                   border: c.featured ? '2px solid #E5A31D' : '1px solid hsl(var(--border))',
                 }}
-                onMouseEnter={() => setPaused(true)}
+                onMouseEnter={() => { setPaused(true); setHoveredIndex(i); }}
                 onMouseLeave={() => {
+                  setHoveredIndex(null);
                   if (pauseTimer.current) clearTimeout(pauseTimer.current);
                   pauseTimer.current = setTimeout(() => setPaused(false), 3000);
                 }}
+                onClick={(e) => {
+                  // Mobile tap toggle (only if not clicking a link)
+                  if (window.matchMedia("(hover: none)").matches && !(e.target as HTMLElement).closest("a")) {
+                    setHoveredIndex(prev => prev === i ? null : i);
+                    setPaused(true);
+                  }
+                }}
               >
-                <div className="overflow-hidden">
+                <div className="overflow-hidden relative">
                   <ChartCardImage name={c.name} profileImage={c.profileImage} />
+                  <CertificateOverlay profileImage={c.profileImage} visible={hoveredIndex === i} />
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-1.5 flex-wrap mb-1">
