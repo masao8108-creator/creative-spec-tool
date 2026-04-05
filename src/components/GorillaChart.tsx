@@ -54,13 +54,20 @@ const GorillaChart = () => {
                       <img
                         src={c.profileImage}
                         alt={c.name}
-                        className="w-full h-full object-cover object-top relative z-10 transition-transform duration-300 group-hover:scale-105"
-                        style={{ filter: 'brightness(1.05)' }}
+                        className="w-full h-full object-cover relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        style={{
+                          filter: 'brightness(1.05)',
+                          backgroundColor: '#f0f0ec',
+                          objectPosition: c.name === '최민희' ? 'center 10%' : 'center 20%',
+                        }}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center relative z-10">
-                        <div className={`w-24 h-24 rounded-full flex items-center justify-center text-4xl font-extrabold ${color.bg} ${color.text}`}>
-                          {c.name[0]}
+                        <div
+                          className="w-24 h-24 rounded-full flex items-center justify-center"
+                          style={{ background: 'linear-gradient(135deg, #E5A31D, #f0c45c)' }}
+                        >
+                          <span className="text-[32px] font-[800] text-white">{c.name[0]}</span>
                         </div>
                       </div>
                     )}
