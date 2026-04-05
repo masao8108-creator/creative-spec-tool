@@ -142,12 +142,12 @@ const GorillaChart = ({ filter = "전체" }: { filter?: string }) => {
             {allConsultants.map((c, i) => (
               <div
                 key={c.name}
-                className="group shrink-0 rounded-2xl bg-card overflow-hidden transition-all duration-300 ease-out"
+                className="group shrink-0 rounded-2xl bg-card overflow-hidden transition-all duration-200 ease-out"
                 style={{
                   width: `${cardWidth}px`,
                   scrollSnapAlign: "start",
                   border: c.featured ? '2px solid #E5A31D' : '1px solid hsl(var(--border))',
-                  transform: i === activeIndex ? 'scale(1.05)' : 'scale(0.95)',
+                  transform: i === activeIndex ? 'scale(1.03)' : 'scale(0.97)',
                   opacity: i === activeIndex ? 1 : 0.75,
                   boxShadow: i === activeIndex ? '0 8px 30px rgba(0,0,0,0.12)' : 'none',
                 }}
