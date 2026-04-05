@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 228 33% 13%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 228 33% 13%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 228 33% 13%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 40 80% 50%;
+    --primary: 40 85% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 33% 96%;
-    --secondary-foreground: 228 33% 13%;
+    --secondary: 40 20% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 40 10% 96.5%;
-    --muted-foreground: 217 10% 47%;
+    --muted: 40 8% 96%;
+    --muted-foreground: 220 6% 44%;
 
-    --accent: 40 80% 50%;
+    --accent: 40 85% 51%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -30,18 +30,16 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 40 80% 50%;
+    --ring: 40 85% 51%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    /* Custom tokens */
-    --gold: 40 80% 50%;
-    --gold-light: 43 88% 94%;
-    --gold-dim: 40 80% 50%;
-    --ink: 228 33% 13%;
-    --sub: 220 7% 46%;
-    --sub2: 216 8% 64%;
-    --section-bg: 40 11% 97%;
+    --ink: 0 0% 13%;
+    --sub: 220 6% 44%;
+    --sub2: 220 6% 64%;
+    --gold: 40 85% 51%;
+    --gold-light: 43 90% 95%;
+    --section-alt: 40 10% 97%;
   }
 }
 
@@ -49,27 +47,18 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-    font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.4s ease forwards;
-  opacity: 0;
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
