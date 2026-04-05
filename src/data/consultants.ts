@@ -10,6 +10,7 @@ export interface Consultant {
   specialties: string[];
   featured: boolean;
   profileImage: string;
+  yearsOfExperience: number;
 }
 
 export const CONSULTANTS: Consultant[] = [
