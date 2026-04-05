@@ -11,6 +11,10 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       overlay: false,
     },
+    headers: {
+      "X-Frame-Options": "ALLOWALL",
+      "Content-Security-Policy": "frame-ancestors 'self' https://www.ppomppu.co.kr https://ppomppu.co.kr",
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
