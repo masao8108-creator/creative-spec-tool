@@ -5,6 +5,7 @@ import SpecialtyIconRow from "@/components/SpecialtyIconRow";
 import GorillaChart from "@/components/GorillaChart";
 import ConsultantCard from "@/components/ConsultantCard";
 import CtaBanner from "@/components/CtaBanner";
+import TestimonialSection from "@/components/TestimonialSection";
 import SiteFooter from "@/components/SiteFooter";
 import { CONSULTANTS, shuffle } from "@/data/consultants";
 
@@ -50,6 +51,7 @@ const Index = () => {
         </div>
       </section>
 
+      <TestimonialSection />
       <CtaBanner />
       <SiteFooter />
     </div>
